@@ -10,7 +10,7 @@ local_state = os.path.expanduser(path)
 def write_json(contents, file=local_state):
     json_contents = json.JSONEncoder().encode(contents)
 
-    with open(local_state, 'w') as f:
+    with open(file, 'w') as f:
         f.write(str(json_contents))
 
 
