@@ -3,8 +3,8 @@
 import json
 import os
 
-path = '~/Library/Application Support/Google/Chrome/Local State'
-local_state = os.path.expanduser(path)
+dir = os.path.expanduser('~/Library/Application Support/Google/Chrome/')
+local_state = os.path.join(dir, 'Local State')
 
 
 def write_json(contents, file=local_state):
@@ -23,6 +23,9 @@ if os.path.exists(local_state):
 
     write_json(contents)
 else:
+    if not os.path.exists(dir):
+        os.makedirs(dir, 0700)
+
     new_contents = {}
     new_contents[u'browser'] = {u'enabled_labs_experiments': [u'enable-quic@2']}
 
