@@ -7,10 +7,10 @@ chrome_dir = os.path.expanduser('~/Library/Application Support/Google/Chrome/')
 local_state = os.path.join(chrome_dir, 'Local State')
 
 
-def write_json(contents, local_state):
+def write_json(contents, state_file=local_state):
     json_contents = json.JSONEncoder().encode(contents)
 
-    with open(local_state, 'w') as f:
+    with open(state_file, 'w') as f:
         f.write(str(json_contents))
 
 
